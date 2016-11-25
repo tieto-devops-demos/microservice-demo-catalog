@@ -7,8 +7,9 @@
 	</head>
 	<body class="item">
 		<h1 layout:fragment="header">
-			<span th:if="${item.id == 0}">Add Product</span>
-			<span th:if="${item.id != 0}">Edit Product</span>
+			<span class="icon product-icon"></span>
+			<span class="iconed-title" th:if="${item.id == 0}">Add Product</span>
+			<span class="iconed-title" th:if="${item.id != 0}">Edit Product</span>
 		</h1>
 		<div layout:fragment="content" class="container">
 			<form th:action="${item.id != 0} ? ${item.id} + '.html' : 'form.html' " th:object="${item}"
