@@ -2,42 +2,52 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 	layout:decorator="layout">
-<head>
-<title>Item : View all</title>
-</head>
-<body>
-	<h1 layout:fragment="header">Item : View all</h1>
-	<div layout:fragment="content" class="container">
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<td>id</td>
-					<td>Name</td>
-					<td>Price</td>
-					<td></td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:if="${items.empty}">
-					<td colspan="4">No items</td>
-				</tr>
-				<tr th:each="item : ${items}">
-					<td><a href="1.html" th:href="${item.id+'.html'}"
-						th:text="${item.id}">1</a></td>
-					<td th:text="${item.name}">Name</td>
-					<td th:text="${item.price}">42.0</td>
-					<td><form th:action="${item.id+'.html'}"
-							th:method="delete">
-							<input type="submit" value="delete" class="btn btn-link" />
-						</form></td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="row">
-			<div class="col-md-4">
-				<a href="form.html">Add Item</a>
+	<head>
+		<title>Products</title>
+	</head>
+	<body>
+		<h1 layout:fragment="header">Products</h1>
+		<div layout:fragment="content" class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<a class="button" href="form.html">Add Item</a>
+				</div>
 			</div>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Image</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${items.empty}">
+						<td colspan="4">No items</td>
+					</tr>
+					<tr th:each="item : ${items}">
+						<td>
+							<a href="1.html" th:href="${item.id + '.html'}" th:text="${item.id}">1</a>
+						</td>
+						<td>
+							<a href="1.html" th:href="${item.id + '.html'}"><img th:src="'/images/product_' + ${item.id} + '.png'" width="140" /></a>
+						</td>
+						<td>
+							<a href="1.html" th:href="${item.id + '.html'}" th:text="${item.name}">Name</a>
+						</td>
+						<td>
+							<span th:text="${item.price}">42.0</span> €
+						</td>
+						<td>
+							<form th:action="${item.id + '.html'}" th:method="delete">
+								<input type="submit" value="delete" class="btn btn-link delete" />
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-	</div>
-</body>
+	</body>
 </html>
