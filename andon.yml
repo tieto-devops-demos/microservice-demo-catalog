@@ -29,7 +29,7 @@ integration_testing:
       service_virtualization: false
     commands:
       - test_commands:
-        - mvn -P Robot -D service_url=http://catalog:8080 install
+        - cmd: mvn -P Robot -D service_url=http://catalog:8080 install
 
 post_stage:
   go_cd_agent_props:
