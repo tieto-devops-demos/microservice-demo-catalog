@@ -23,9 +23,9 @@
 					<input type="number" th:field="*{price}" class="form-control" placeholder="price" /> €
 				</div>
 				<div class="form-group">
-					<a href=""><img class="item-image" th:src="'/images/product_' + ${item.id} + '.png'" /></a>
+					<a href="" id="upload-image"><img class="item-image" th:src="'/images/product_' + ${item.id} + '.png'" /></a>
 				</div>
-				<button type="submit" class="btn btn-default">Save</button>
+				<button type="submit" class="btn btn-default" id="saveItem">Save</button>
 			</form>
 		</div>
 	</body>
