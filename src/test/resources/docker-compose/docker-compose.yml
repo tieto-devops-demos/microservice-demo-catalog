@@ -12,8 +12,8 @@ services:
 #     - eureka
   catalog:
 #    image: "catalog:${GO_PIPELINE_COUNTER}"
-  image: "catalog:latest #REMOVE
-  expose:
+    image: "catalog:latest #REMOVE
+    expose:
       - "8080"
 #    links:
 #     - eureka
