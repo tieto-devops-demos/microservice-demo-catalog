@@ -58,4 +58,7 @@ post_stage:
     - maven
   custom_cmd:
       - sudo docker login -u eekamak -p $passu  # You can use secret variables to login to e.g. Docker Hub
-      - sudo docker tag catalog:$GO_PIPELINE_COUNTER catalog:latest
+      - sudo docker tag catalog:$GO_PIPELINE_COUNTER andon/catalog:$GO_PIPELINE_COUNTER
+      - sudo docker push andon/catalog:$GO_PIPELINE_COUNTER
+      - sudo docker tag catalog:$GO_PIPELINE_COUNTER andon/catalog:latest
+      - sudo docker push andon/catalog:latest
