@@ -1,9 +1,9 @@
 version: '2'
 services:
-#  eureka:
-#    image: "eureka:${GO_REVISION_EUREKA}"
-#    expose:
-#      - "8761"
+  eureka:
+    image: "eekamak/eureka"
+    expose:
+      - "8761"
 #  customer:
 #    image: "customer:${GO_REVISION_CUSTOMER}"
 #    expose:
@@ -11,8 +11,7 @@ services:
 #    links:
 #     - eureka
   catalog:
-#    image: "catalog:${GO_PIPELINE_COUNTER}"
-    image: "catalog:latest"
+    image: "catalog:${GO_PIPELINE_COUNTER}"
     expose:
       - "8080"
 #    links:
