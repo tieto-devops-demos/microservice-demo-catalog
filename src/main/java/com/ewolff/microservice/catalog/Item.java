@@ -1,25 +1,18 @@
 package com.ewolff.microservice.catalog;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "catalog")
 public class Item {
 
-	@Id
-	@GeneratedValue
 	private Long id;
 
-	@Column(nullable = false)
 	private String name;
 
-	@Column(nullable = false)
 	private double price;
 
 	public Item() {
@@ -27,8 +20,9 @@ public class Item {
 		id = 0l;
 	}
 
-	public Item(String name, double price) {
+	public Item(Long id , String name, double price) {
 		super();
+		this.id = id; 
 		this.name = name;
 		this.price = price;
 	}

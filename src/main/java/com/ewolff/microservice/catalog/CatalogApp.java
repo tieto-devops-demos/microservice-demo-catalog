@@ -16,6 +16,9 @@ import org.springframework.stereotype.Component;
 public class CatalogApp {
 
 	private final ItemRepository itemRepository;
+	
+	@Autowired
+	NextSequenceService nextSequence; 
 
 	@Autowired
 	public CatalogApp(ItemRepository itemRepository) {
@@ -24,10 +27,10 @@ public class CatalogApp {
 
 	@PostConstruct
 	public void generateTestData() {
-		itemRepository.save(new Item("iPod", 42.0));
-		itemRepository.save(new Item("iPod touch", 21.0));
-		itemRepository.save(new Item("iPod nano", 1.0));
-		itemRepository.save(new Item("Apple TV", 100.0));
+		itemRepository.save(new Item(nextSequence.getNextSequence(), "iPod", 42.0));
+		itemRepository.save(new Item(nextSequence.getNextSequence(),"iPod touch", 21.0));
+		itemRepository.save(new Item(nextSequence.getNextSequence(),"iPod nano", 1.0));
+		itemRepository.save(new Item(nextSequence.getNextSequence(),"Apple TV", 100.0));
 	}
 
 	public static void main(String[] args) {
