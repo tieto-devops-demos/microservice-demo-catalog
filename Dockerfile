@@ -1,4 +1,4 @@
-FROM ewolff/docker-java
+FROM openjdk:8-jre
 ADD target/microservice-demo-catalog-0.0.1-SNAPSHOT.jar .
 #Removed Ilpos changes
 #CMD /usr/bin/java -Xmx400m -Xms400m -Djava.security.egd=file:/dev/./urandom -jar -Deureka.client.enabled=false microservice-demo-catalog-0.0.1-SNAPSHOT.jar
