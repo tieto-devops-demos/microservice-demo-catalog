@@ -11,19 +11,20 @@ pipelines:
         git: https://github.com/tieto-devops-demos/microservice-demo-catalog.git
     stages:
       - build: # name of stage
-        jobs:
-          maven: # name of the job
-            andon: # andon job configuration
-              image: "andon.artifactorypro.shared.pub.tds.tieto.com/andon-gocd-agent-java8-maven3:17.04" # elastic agent image
-              sonarqube: true
-            tasks:
-             - exec: # indicates type of task
-                 command: bash
-                 arguments:
-                  - "-c" 
-                  - "mvn clean -Djava.security.egd=file:/dev/./urandom install"
-             - exec: # indicates type of task
-                 command: bash
-                 arguments:
-                  - "-c" 
-                  - "mvn sonar:sonar -Dsonar.login=$SONARUSER -Dsonar.password=$SONARPASSWORD -Dsonar.host.url=http://sonarqube:9000"
+          jobs:
+            maven: # name of the job
+              andon: # andon job configuration
+                image: "andon.artifactorypro.shared.pub.tds.tieto.com/andon-gocd-agent-java8-maven3:17.04" # elastic agent image
+                sonarqube: true
+              elastic_profile_id: "agent"
+              tasks:
+               - exec: # indicates type of task
+                   command: bash
+                   arguments:
+                    - "-c" 
+                    - "mvn clean -Djava.security.egd=file:/dev/./urandom install"
+               - exec: # indicates type of task
+                   command: bash
+                   arguments:
+                    - "-c" 
+                    - "mvn sonar:sonar -Dsonar.login=$SONARUSER -Dsonar.password=$SONARPASSWORD -Dsonar.host.url=http://sonarqube:9000"
