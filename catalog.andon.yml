@@ -52,10 +52,10 @@ pipelines:
               artifacts:
                 - build:
                     source: .
-                    destination: .
+#                    destination: .
                 - test:
                     source: "target/*"
-                    destination: .
+#                    destination: .
               tabs:
                 robot: robotframework-reports/report.html
               tasks:
