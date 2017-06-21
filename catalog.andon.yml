@@ -27,8 +27,8 @@ pipelines:
                    command: bash
                    arguments:
                     - "-c" 
-                    - "mvn sonar:sonar -Dsonar.login=$SONARUSER -Dsonar.password=$SONARPASSWORD -Dsonar.host.url=http://sonarqube:9000"
-            docker: # name of the job
+                    - "docker build -f Dockerfile -t catalog:$GO_PIPELINE_COUNTER ."
+            sonar: # name of the job
               andon: # andon job configuration
                 image: "andon.artifactorypro.shared.pub.tds.tieto.com/andon-gocd-agent-java8-maven3:17.04" # elastic agent image
                 sonarqube: true
@@ -39,5 +39,5 @@ pipelines:
                    command: bash
                    arguments:
                     - "-c" 
-                    - "docker build -f Dockerfile -t catalog:$GO_PIPELINE_COUNTER ."
+                    - "mvn sonar:sonar -Dsonar.login=$SONARUSER -Dsonar.password=$SONARPASSWORD -Dsonar.host.url=http://sonarqube:9000"
                     
