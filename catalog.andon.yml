@@ -52,8 +52,8 @@ pipelines:
 #              artifacts:
 #                - test:
 #                  source: "target/*"
-#              tabs:
-#                robot: robotframework-reports/report.html
+              tabs:
+                robot: robotframework-reports/report.html
               tasks:
                - exec: # indicates type of task
                    run_if: "passed"
