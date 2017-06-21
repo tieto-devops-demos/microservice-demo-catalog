@@ -50,12 +50,8 @@ pipelines:
                   docker_compose:
                     - "/godata/pipelines/Catalog/src/test/resources/docker-compose/docker-compose.yml"
               artifacts:
-#                - build:
-#                    source: .
-#                    destination: .
                 - test:
                     source: "target/*"
-#                    destination: .
               tabs:
                 robot: robotframework-reports/report.html
               tasks:
@@ -65,4 +61,17 @@ pipelines:
                    arguments:
                     - "-c" 
                     - "mvn -P Robot -D service_url=http://catalog:8080 install"
+      - post: # name of stage
+          jobs:
+            docker: # name of the job
+              andon: # andon job configuration
+                image: "andon.artifactorypro.shared.pub.tds.tieto.com/andon-gocd-agent-java8-maven3:17.04" # elastic agent image
+                sonarqube: true
+              tasks:
+               - exec: # indicates type of task
+                   run_if: "passed"
+                   command: bash
+                   arguments:
+                    - "-c" 
+                    - "docker tag catalog:$GO_PIPELINE_COUNTER catalog:latest"
                     
