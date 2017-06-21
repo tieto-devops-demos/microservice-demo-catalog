@@ -49,11 +49,11 @@ pipelines:
                 deploy_env:
                   docker_compose:
                     - "/godata/pipelines/Catalog/src/test/resources/docker-compose/docker-compose.yml"
-              artifacts:
-                - test:
-                  source: "target/*"
-              tabs:
-                robot: robotframework-reports/report.html
+#              artifacts:
+#                - test:
+#                  source: "target/*"
+#              tabs:
+#                robot: robotframework-reports/report.html
               tasks:
                - exec: # indicates type of task
                    run_if: "passed"
