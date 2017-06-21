@@ -49,9 +49,10 @@ pipelines:
                 deploy_env:
                   docker_compose:
                     - "/godata/pipelines/Catalog/src/test/resources/docker-compose/docker-compose.yml"
-#              artifacts:
-#                - test:
-#                  source: "target/*"
+              artifacts:
+                - test:
+                  source: "target/*"
+                  destination: .
               tabs:
                 robot: robotframework-reports/report.html
               tasks:
