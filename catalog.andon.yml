@@ -23,12 +23,12 @@ pipelines:
                    arguments:
                     - "-c" 
                     - "mvn clean -Djava.security.egd=file:/dev/./urandom install"
-               - exec: # indicates type of task
-                   run-if: passed
-                   command: bash
-                   arguments:
-                    - "-c" 
-                    - "mvn sonar:sonar -Dsonar.login=$SONARUSER -Dsonar.password=$SONARPASSWORD -Dsonar.host.url=http://sonarqube:9000"               
+               #- exec: # indicates type of task
+                   #run-if: passed
+                   #command: bash
+                   #arguments:
+                    #- "-c" 
+                    #- "mvn sonar:sonar -Dsonar.login=$SONARUSER -Dsonar.password=$SONARPASSWORD -Dsonar.host.url=http://sonarqube:9000"               
                - exec: # indicates type of task
                    command: bash
                    arguments:
